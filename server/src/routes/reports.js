@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Reports Routes
+// tamesna Gym v9.0 — Reports Routes
 // Revenue, Churn Rate, KPIs | CdC §VI
 // ============================================
 
@@ -11,7 +11,7 @@ export default async function reportRoutes(fastify) {
   // ─── GET /reports/kpis ────────────────────
   fastify.get('/kpis', { preHandler: [authenticate] }, async (request, reply) => {
     const rls = getRLSContext(request);
-    
+
     // Auto-update expired memberships before calculating KPIs
     await queryWithRLS(
       `UPDATE members SET status = 'EXPIRED' 
@@ -58,10 +58,10 @@ export default async function reportRoutes(fastify) {
   fastify.get('/revenue', { preHandler: [authenticate] }, async (request, reply) => {
     const rls = getRLSContext(request);
     const { period = '6m', gym_id } = request.query;
-    
+
     let interval = '6 months';
     let trunc = 'month';
-    
+
     if (period === '7d') {
       interval = '7 days';
       trunc = 'day';
@@ -78,12 +78,12 @@ export default async function reportRoutes(fastify) {
 
     let whereClause = `date_start >= CURRENT_DATE - $1::INTERVAL`;
     const params = [interval];
-    
+
     if (gym_id) {
       whereClause += ` AND gym_id = $2`;
       params.push(gym_id);
     }
-    
+
     const result = await queryWithRLS(`
       SELECT DATE_TRUNC('${trunc}', date_start) AS month, COUNT(*) AS total_payments, SUM(amount) AS total_revenue
       FROM payments
@@ -91,7 +91,7 @@ export default async function reportRoutes(fastify) {
       GROUP BY DATE_TRUNC('${trunc}', date_start) ORDER BY month`,
       params, rls
     );
-    
+
     return reply.send({ revenue: result.rows });
   });
 
@@ -100,7 +100,7 @@ export default async function reportRoutes(fastify) {
     const rls = getRLSContext(request);
     const { gym_id } = request.query;
     const gymFilter = gym_id ? `AND gym_id = ${parseInt(gym_id)}` : '';
-    
+
     const result = await queryWithRLS(`
       WITH start_count AS (
         SELECT COUNT(*) AS cnt FROM members

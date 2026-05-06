@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Payments Routes
+// tamesna Gym v9.0 — Payments Routes
 // CdC §IX + auto ACTIVE transition
 // ============================================
 
@@ -16,27 +16,27 @@ export default async function paymentRoutes(fastify) {
     }
     const { page = 1, limit = 25, member_id, from, to, gym_id, search, payment_method } = request.query;
     const offset = (page - 1) * limit;
-    
+
     const conditions = ['1=1'];
     const params = [];
     let idx = 1;
 
     // Staff can see their payments across all gyms (Global View)
-    if (gym_id && request.user.role !== 'STAFF') { 
-      conditions.push(`p.gym_id = $${idx++}`); 
-      params.push(gym_id); 
+    if (gym_id && request.user.role !== 'STAFF') {
+      conditions.push(`p.gym_id = $${idx++}`);
+      params.push(gym_id);
     }
     if (member_id) { conditions.push(`p.member_id = $${idx++}`); params.push(member_id); }
     if (from) { conditions.push(`p.date_start >= $${idx++}`); params.push(from); }
     if (to) { conditions.push(`p.date_start <= $${idx++}`); params.push(to); }
     if (payment_method) { conditions.push(`p.payment_method = $${idx++}`); params.push(payment_method); }
-    
+
     // STAFF can only see payments they created
     if (request.user.role === 'STAFF') {
       conditions.push(`p.staff_id = $${idx++}`);
       params.push(request.user.id);
     }
-    
+
     if (search) {
       const searchTerm = search.trim();
       const isStaff = request.user.role === 'STAFF';
@@ -74,7 +74,7 @@ export default async function paymentRoutes(fastify) {
 
     const where = conditions.join(' AND ');
     const queryParams = [...params, parseInt(limit), offset];
-    
+
     const result = await queryWithRLS(
       `SELECT p.*, s.name as subscription_name, (m.first_name || ' ' || m.last_name) as member_name
        FROM payments p
@@ -121,7 +121,7 @@ export default async function paymentRoutes(fastify) {
 
       // Allow STAFF with no assigned gym to specify gym_id in body
       const gym_id = (request.user.role === 'SUPER_ADMIN' || !request.user.gym_id)
-        ? (request.body.gym_id || request.user.gym_id) 
+        ? (request.body.gym_id || request.user.gym_id)
         : request.user.gym_id;
 
       return await transactionWithRLS(rls, async (client) => {
@@ -178,7 +178,7 @@ export default async function paymentRoutes(fastify) {
       throw err;
     }
   });
-  
+
   // ─── DELETE /payments/:id (Admin Only) ──────
   fastify.delete('/:id', { preHandler: [authenticate] }, async (request, reply) => {
     if (request.user.role !== 'SUPER_ADMIN') {

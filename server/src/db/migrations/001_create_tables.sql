@@ -1,5 +1,5 @@
 -- ============================================
--- Lakhlifi Gym v9.0
+-- tamesna Gym v9.0
 -- Migration 001: Create All Tables
 -- CdC Reference: §3.1 - §3.7
 -- ============================================

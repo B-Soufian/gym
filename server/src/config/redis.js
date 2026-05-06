@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Redis Configuration
+// tamesna Gym v9.0 — Redis Configuration
 // ============================================
 
 import Redis from 'ioredis';

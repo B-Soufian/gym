@@ -96,7 +96,7 @@ const Layout = () => {
         {/* Brand */}
         <div className="h-20 flex items-center px-6 border-b border-white/10">
           <Dumbbell className="w-8 h-8 text-brand-red flex-shrink-0" />
-          {sidebarOpen && <span className="ml-3 font-bold text-xl tracking-tight">Lakhlifi Gym</span>}
+          {sidebarOpen && <span className="ml-3 font-bold text-xl tracking-tight">Tamesna Gym</span>}
         </div>
 
         {/* Navigation */}
@@ -111,7 +111,7 @@ const Layout = () => {
                   className={`
                     flex items-center px-3 py-3 rounded-xl transition-all group
                     ${location.pathname === item.path
-                      ? 'bg-brand-red text-brand-papaya shadow-lg shadow-brand-red/20'
+                      ? 'bg-brand-red text-brand-space shadow-lg shadow-brand-red/30'
                       : 'text-brand-steel hover:bg-white/5 hover:text-brand-papaya'}
                   `}
                 >

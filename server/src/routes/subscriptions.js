@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Subscriptions Routes
+// tamesna Gym v9.0 — Subscriptions Routes
 // ============================================
 
 import { queryWithRLS, query } from '../config/database.js';

@@ -1,5 +1,5 @@
 -- ============================================
--- Lakhlifi Gym v9.0
+-- tamesna Gym v9.0
 -- Migration 002: Enable Row-Level Security
 -- CdC Reference: §2.2
 -- ============================================

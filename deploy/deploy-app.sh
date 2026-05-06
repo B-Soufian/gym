@@ -1,14 +1,14 @@
 #!/bin/bash
 # ============================================
-# Lakhlifi Gym v9.0 — App Deployment
-# Run as ubuntu user from /opt/lakhlifi-gym
+# tamesna Gym v9.0 — App Deployment
+# Run as ubuntu user from /opt/tamesna-gym
 # ============================================
 set -euo pipefail
 
-APP_DIR="/opt/lakhlifi-gym"
+APP_DIR="/opt/tamesna-gym"
 cd "$APP_DIR"
 
-echo "🚀 Deploying Lakhlifi Gym v9.0..."
+echo "🚀 Deploying tamesna Gym v9.0..."
 
 # Install server dependencies
 echo "📦 Installing server dependencies..."
@@ -28,16 +28,16 @@ node src/db/migrate.js
 
 # Setup Nginx
 echo "🌐 Configuring Nginx..."
-sudo cp "$APP_DIR/deploy/nginx.conf" /etc/nginx/sites-available/lakhlifi-gym
-sudo ln -sf /etc/nginx/sites-available/lakhlifi-gym /etc/nginx/sites-enabled/lakhlifi-gym
+sudo cp "$APP_DIR/deploy/nginx.conf" /etc/nginx/sites-available/tamesna-gym
+sudo ln -sf /etc/nginx/sites-available/tamesna-gym /etc/nginx/sites-enabled/tamesna-gym
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t && sudo systemctl reload nginx
 
 # Start with PM2
 echo "⚡ Starting application with PM2..."
 cd "$APP_DIR/server"
-pm2 delete lakhlifi-gym 2>/dev/null || true
-pm2 start server.js --name lakhlifi-gym --env production
+pm2 delete tamesna-gym 2>/dev/null || true
+pm2 start server.js --name tamesna-gym --env production
 pm2 save
 
 echo ""

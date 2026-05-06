@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Migration Runner
+// tamesna Gym v9.0 — Migration Runner
 // ============================================
 
 import { readFileSync } from 'fs';

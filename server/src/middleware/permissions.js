@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Permissions Middleware
+// tamesna Gym v9.0 — Permissions Middleware
 // Role-based access control (CdC §5.1)
 // ============================================
 
@@ -43,43 +43,43 @@ export function requireSuperAdmin() {
  */
 const PERMISSION_MATRIX = {
   // Gym management
-  'gym:create':       ['SUPER_ADMIN'],
-  'gym:delete':       ['SUPER_ADMIN'],
-  'gym:read_all':     ['SUPER_ADMIN'],
+  'gym:create': ['SUPER_ADMIN'],
+  'gym:delete': ['SUPER_ADMIN'],
+  'gym:read_all': ['SUPER_ADMIN'],
 
   // Staff management
-  'staff:create':     ['SUPER_ADMIN'],
+  'staff:create': ['SUPER_ADMIN'],
   'staff:deactivate': ['SUPER_ADMIN'],
 
   // Members
-  'member:create':    ['SUPER_ADMIN', 'STAFF'],
-  'member:read':      ['SUPER_ADMIN', 'STAFF'],
-  'member:update':    ['SUPER_ADMIN', 'STAFF'],
-  'member:delete':    ['SUPER_ADMIN', 'STAFF'],
+  'member:create': ['SUPER_ADMIN', 'STAFF'],
+  'member:read': ['SUPER_ADMIN', 'STAFF'],
+  'member:update': ['SUPER_ADMIN', 'STAFF'],
+  'member:delete': ['SUPER_ADMIN', 'STAFF'],
 
   // Payments
-  'payment:create':   ['SUPER_ADMIN', 'STAFF'],
-  'payment:read':     ['SUPER_ADMIN', 'STAFF'],
+  'payment:create': ['SUPER_ADMIN', 'STAFF'],
+  'payment:read': ['SUPER_ADMIN', 'STAFF'],
   'payment:read_all': ['SUPER_ADMIN'],
 
   // Subscriptions
   'subscription:create': ['SUPER_ADMIN'],
   'subscription:update': ['SUPER_ADMIN'],
-  'subscription:read':   ['SUPER_ADMIN', 'STAFF'],
+  'subscription:read': ['SUPER_ADMIN', 'STAFF'],
 
   // Audit
-  'audit:read_all':   ['SUPER_ADMIN'],
-  'audit:read_own':   ['SUPER_ADMIN', 'STAFF'],
+  'audit:read_all': ['SUPER_ADMIN'],
+  'audit:read_own': ['SUPER_ADMIN', 'STAFF'],
 
   // Dashboard
-  'dashboard:multi':  ['SUPER_ADMIN'],
+  'dashboard:multi': ['SUPER_ADMIN'],
 
   // Reports
   'report:export_all': ['SUPER_ADMIN'],
   'report:export_own': ['SUPER_ADMIN', 'STAFF'],
 
   // WhatsApp
-  'queue:manage':     ['SUPER_ADMIN', 'STAFF'],
+  'queue:manage': ['SUPER_ADMIN', 'STAFF'],
 };
 
 /**

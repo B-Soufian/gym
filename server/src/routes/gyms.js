@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Gyms Routes
+// tamesna Gym v9.0 — Gyms Routes
 // CRUD (SUPER_ADMIN only) | CdC §IX
 // ============================================
 
@@ -39,10 +39,14 @@ export default async function gymRoutes(fastify) {
 
   fastify.post('/', {
     preHandler: [authenticate, requireRole('SUPER_ADMIN')],
-    schema: { body: { type: 'object', required: ['name'], properties: {
-      name: { type: 'string', minLength: 2 }, address: { type: 'string' },
-      phone: { type: 'string' }, logo_url: { type: 'string' }
-    }}}
+    schema: {
+      body: {
+        type: 'object', required: ['name'], properties: {
+          name: { type: 'string', minLength: 2 }, address: { type: 'string' },
+          phone: { type: 'string' }, logo_url: { type: 'string' }
+        }
+      }
+    }
   }, async (request, reply) => {
     try {
       const { name, address, phone, logo_url } = request.body;

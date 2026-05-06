@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — JWT Configuration
+// tamesna Gym v9.0 — JWT Configuration
 // Access token: 15 min | Refresh token: 7 days
 // CdC Reference: §5.2
 // ============================================

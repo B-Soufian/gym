@@ -1,7 +1,7 @@
 {
   "name": "gymvision-server",
   "version": "9.0.0",
-  "description": "Lakhlifi Gym v9.0 — Backend API Server",
+  "description": "tamesna Gym v9.0 — Backend API Server",
   "main": "server.js",
   "type": "module",
   "scripts": {

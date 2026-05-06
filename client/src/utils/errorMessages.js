@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym — Utilitaire de gestion d'erreurs
+// Tamesna Gym — Utilitaire de gestion d'erreurs
 // Transforme les erreurs techniques en messages
 // français clairs pour l'utilisateur final.
 // ============================================

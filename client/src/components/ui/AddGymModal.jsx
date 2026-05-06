@@ -51,7 +51,7 @@ const AddGymModal = ({ isOpen, onClose, onRefresh }) => {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="w-full px-4 py-3 bg-brand-papaya/20 border border-brand-steel/10 rounded-xl focus:ring-2 focus:ring-brand-red/20 outline-none"
-              placeholder="Ex: Lakhlifi Gym"
+              placeholder="Ex: Tamesna Gym"
             />
           </div>
 
@@ -93,7 +93,7 @@ const AddGymModal = ({ isOpen, onClose, onRefresh }) => {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 py-4 bg-brand-red text-brand-papaya font-bold rounded-2xl shadow-xl shadow-brand-red/20 hover:bg-brand-lava transition-all flex items-center justify-center space-x-2"
+              className="flex-1 py-4 bg-brand-red text-brand-space font-bold rounded-2xl shadow-xl shadow-brand-red/30 hover:bg-brand-lava transition-all flex items-center justify-center space-x-2"
             >
               {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : (
                 <>

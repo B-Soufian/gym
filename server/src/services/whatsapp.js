@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — WhatsApp Smart Engine
+// tamesna Gym v9.0 — WhatsApp Smart Engine
 // QR code served to frontend UI for easy scanning
 // ============================================
 
@@ -30,7 +30,7 @@ export async function initWhatsApp() {
 
     // Cleanup previous client if retrying
     if (client) {
-      try { await client.destroy(); } catch(e) { /* ignore */ }
+      try { await client.destroy(); } catch (e) { /* ignore */ }
       client = null;
     }
 
@@ -40,7 +40,7 @@ export async function initWhatsApp() {
         headless: true,
         executablePath: '/usr/bin/chromium-browser',
         args: [
-          '--no-sandbox', 
+          '--no-sandbox',
           '--disable-setuid-sandbox',
           '--disable-dev-shm-usage',
           '--disable-accelerated-2d-canvas',
@@ -58,8 +58,8 @@ export async function initWhatsApp() {
       console.log('📱 WhatsApp QR Code generated — scan from web UI');
       authStatus = 'qr_pending';
       try {
-        currentQR = await QRCode.default.toDataURL(qr, { 
-          width: 500, 
+        currentQR = await QRCode.default.toDataURL(qr, {
+          width: 500,
           margin: 3,
           errorCorrectionLevel: 'H',
           color: { dark: '#000000', light: '#ffffff' }
@@ -118,7 +118,7 @@ export async function retryWhatsApp() {
   currentQR = null;
   lastError = null;
   initAttempted = false;
-  
+
   // Small delay then re-init
   setTimeout(() => initWhatsApp(), 500);
   return { message: 'Reconnexion en cours...' };
@@ -130,8 +130,8 @@ export async function retryWhatsApp() {
 export async function disconnectWhatsApp() {
   try {
     if (client) {
-      try { await client.logout(); } catch(e) { /* ignore */ }
-      try { await client.destroy(); } catch(e) { /* ignore */ }
+      try { await client.logout(); } catch (e) { /* ignore */ }
+      try { await client.destroy(); } catch (e) { /* ignore */ }
       client = null;
     }
 
@@ -178,9 +178,9 @@ export async function sendSmartMessage(phone, body) {
  * Get the full WhatsApp status for the frontend
  */
 export function getWhatsAppStatus() {
-  return { 
-    ready: clientReady, 
-    initialized: initAttempted, 
+  return {
+    ready: clientReady,
+    initialized: initAttempted,
     status: authStatus,
     hasQR: !!currentQR,
     error: lastError

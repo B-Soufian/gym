@@ -1,12 +1,12 @@
 #!/bin/bash
 # ============================================
-# Lakhlifi Gym v9.0 — OCI Server Setup
+# tamesna Gym v9.0 — OCI Server Setup
 # Run as: sudo bash setup-server.sh
 # ============================================
 set -euo pipefail
 
 echo "╔══════════════════════════════════════════╗"
-echo "║  🏋️  Lakhlifi Gym — Server Setup         ║"
+echo "║  🏋️  tamesna Gym — Server Setup         ║"
 echo "╚══════════════════════════════════════════╝"
 
 export DEBIAN_FRONTEND=noninteractive
@@ -57,7 +57,7 @@ echo "📦 Installing PM2..."
 npm install -g pm2
 
 # App directory
-mkdir -p /opt/lakhlifi-gym
-chown ubuntu:ubuntu /opt/lakhlifi-gym
+mkdir -p /opt/tamesna-gym
+chown ubuntu:ubuntu /opt/tamesna-gym
 
 echo "✅ Server setup complete!"

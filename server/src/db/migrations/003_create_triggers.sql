@@ -1,5 +1,5 @@
 -- ============================================
--- Lakhlifi Gym v9.0
+-- tamesna Gym v9.0
 -- Migration 003: Create Triggers
 -- CdC Reference: §8.2
 -- ============================================

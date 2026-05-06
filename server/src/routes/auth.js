@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Auth Routes
+// tamesna Gym v9.0 — Auth Routes
 // POST /auth/login, /auth/refresh, /auth/logout
 // CdC Reference: §5.2, §IX
 // ============================================

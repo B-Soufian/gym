@@ -40,10 +40,10 @@ const Login = () => {
       <div className="w-full max-w-md relative">
         <div className="glass-dark p-8 rounded-2xl border border-white/10 shadow-2xl space-y-8">
           <div className="text-center space-y-2">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-red mb-4 shadow-lg shadow-brand-red/20 transform -rotate-6">
-              <Dumbbell className="w-8 h-8 text-brand-papaya" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-red mb-4 shadow-lg shadow-brand-red/30 transform -rotate-6">
+              <Dumbbell className="w-8 h-8 text-brand-space" />
             </div>
-            <h1 className="text-3xl font-bold text-brand-papaya tracking-tight">Lakhlifi Gym</h1>
+            <h1 className="text-3xl font-bold text-brand-papaya tracking-tight">Tamesna Gym</h1>
             <p className="text-brand-steel font-medium">Gestion Multi-Tenant de Salles de Sport</p>
           </div>
 
@@ -115,7 +115,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-brand-red hover:bg-brand-lava text-brand-papaya font-bold rounded-xl shadow-lg shadow-brand-red/20 active:transform active:scale-[0.98] transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 bg-brand-red hover:bg-brand-lava text-brand-space font-bold rounded-xl shadow-lg shadow-brand-red/30 active:transform active:scale-[0.98] transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -127,7 +127,7 @@ const Login = () => {
 
           <div className="pt-4 text-center">
             <p className="text-xs text-brand-steel">
-              &copy; 2025  Lakhlifi Gym — Document Maître v9.0
+              &copy; 2025 Tamesna Gym — Système de Gestion
             </p>
           </div>
         </div>

@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-lava: #780000;
-  --color-brand-red: #c1121f;
-  --color-brand-papaya: #fdf0d5;
-  --color-brand-space: #003049;
-  --color-brand-steel: #669bbc;
-  
+  /* ── Tamesna Gym — Navy & Gold palette ── */
+  --color-brand-lava: #FFD60A;    /* Bright Gold  (hover / gradient accent)  */
+  --color-brand-red: #FFC300;     /* Primary Gold (buttons, active states)   */
+  --color-brand-papaya: #f0f4ff;  /* Near-white   (text on dark, light bg)   */
+  --color-brand-space: #001D3D;   /* Deep Navy    (sidebar, dark bg)         */
+  --color-brand-steel: #6B93B8;   /* Soft Blue    (muted / secondary text)   */
+
   --color-border: var(--border);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -14,70 +15,72 @@
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
 
-  --font-sans: "Inter", "Outfit", "Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Inter", "Outfit", "Roboto", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @layer base {
   :root {
-    --background: #fdf0d5; /* Papaya Whip */
-    --foreground: #003049; /* Deep Space Blue */
-    
+    --background: #f0f4ff;   /* Light blue-white */
+    --foreground: #001D3D;   /* Deep Navy        */
+
     --card: #ffffff;
-    --card-foreground: #003049;
-    
+    --card-foreground: #001D3D;
+
     --popover: #ffffff;
-    --popover-foreground: #003049;
-    
-    --primary: #c1121f; /* Brick Red */
-    --primary-foreground: #fdf0d5;
-    
-    --secondary: #669bbc; /* Steel Blue */
-    --secondary-foreground: #003049;
-    
+    --popover-foreground: #001D3D;
+
+    --primary: #FFC300;      /* Primary Gold  */
+    --primary-foreground: #001D3D;
+
+    --secondary: #003566;    /* Medium Navy   */
+    --secondary-foreground: #001D3D;
+
     --muted: #f1f5f9;
     --muted-foreground: #64748b;
-    
-    --accent: #780000; /* Molten Lava */
-    --accent-foreground: #fdf0d5;
-    
+
+    --accent: #FFD60A;       /* Bright Gold   */
+    --accent-foreground: #001D3D;
+
     --destructive: #ef4444;
     --destructive-foreground: #f8fafc;
 
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-    --ring: #c1121f;
+    --border: #d1ddf0;
+    --input: #d1ddf0;
+    --ring: #FFC300;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: #001a2c; /* Slightly darker Deep Space Blue */
-    --foreground: #fdf0d5;
-    
-    --card: #003049; /* Deep Space Blue */
-    --card-foreground: #fdf0d5;
-    
-    --popover: #003049;
-    --popover-foreground: #fdf0d5;
-    
-    --primary: #c1121f;
-    --primary-foreground: #fdf0d5;
-    
-    --secondary: #669bbc;
-    --secondary-foreground: #fdf0d5;
-    
-    --muted: #1e293b;
+    --background: #000814;   /* Deepest Midnight */
+    --foreground: #f0f4ff;
+
+    --card: #001D3D;         /* Deep Navy        */
+    --card-foreground: #f0f4ff;
+
+    --popover: #001D3D;
+    --popover-foreground: #f0f4ff;
+
+    --primary: #FFC300;
+    --primary-foreground: #001D3D;
+
+    --secondary: #003566;
+    --secondary-foreground: #f0f4ff;
+
+    --muted: #003566;
     --muted-foreground: #94a3b8;
-    
-    --accent: #780000;
-    --accent-foreground: #fdf0d5;
-    
+
+    --accent: #FFD60A;
+    --accent-foreground: #001D3D;
+
     --destructive: #7f1d1d;
     --destructive-foreground: #fef2f2;
 
-    --border: #1e293b;
-    --input: #1e293b;
-    --ring: #c1121f;
+    --border: #003566;
+    --input: #003566;
+    --ring: #FFC300;
   }
 }
 
@@ -96,16 +99,18 @@
   .glass {
     @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
   }
-  
+
   .glass-dark {
     @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-2xl;
   }
 
+  /* Gold gradient for headings / badges */
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-brand-lava;
   }
 
+  /* Midnight → Deep Navy → Gold — premium background */
   .bg-premium-gradient {
-    @apply bg-gradient-to-br from-brand-space via-brand-space to-brand-lava;
+    @apply bg-gradient-to-br from-[#000814] via-brand-space to-brand-lava;
   }
 }

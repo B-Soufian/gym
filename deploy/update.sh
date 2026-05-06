@@ -1,10 +1,10 @@
 #!/bin/bash
 # ============================================
-# Lakhlifi Gym — Quick Update Script
+# tamesna Gym — Quick Update Script
 # ============================================
 set -e
 
-cd ~/lakhlifi_gym
+cd ~/tamesna_gym
 
 echo "📥 Pulling latest code from GitHub..."
 git pull origin main

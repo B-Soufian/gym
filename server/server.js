@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Server Entry Point
+// tamesna Gym v9.0 — Server Entry Point
 // Fastify + all plugins and routes
 // ============================================
 
@@ -108,7 +108,7 @@ async function start() {
     await fastify.listen({ port: PORT, host: HOST });
     console.log(`
 ╔══════════════════════════════════════════╗
-║       🏋️  Lakhlifi Gym v9.0  🏋️       ║
+║       🏋️  tamesna Gym v9.0  🏋️       ║
 ║──────────────────────────────────────────║
 ║  Server:  http://localhost:${PORT}          ║
 ║  API:     http://localhost:${PORT}/api/v1   ║

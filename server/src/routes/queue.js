@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Queue Routes
+// tamesna Gym v9.0 — Queue Routes
 // WhatsApp sending queue | CdC §VII
 // ============================================
 
@@ -92,10 +92,10 @@ export default async function queueRoutes(fastify) {
     const { getWhatsAppStatus } = await import('../services/whatsapp.js');
     const status = getWhatsAppStatus();
     if (!status.ready) {
-      return reply.code(503).send({ 
+      return reply.code(503).send({
         error: 'WhatsApp non connecté',
         message: 'Scannez le QR code dans le terminal du serveur pour connecter WhatsApp.',
-        status 
+        status
       });
     }
     await queueJobsQueue.add('process-sending-queue', { manual: true });

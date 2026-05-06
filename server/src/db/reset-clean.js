@@ -53,10 +53,10 @@ async function reset() {
     // 4. Create the custom user
     console.log('👤 Creating user: ihssane...');
     const passwordHash = await bcrypt.hash('ihssane@2026', 12);
-    
+
     // We need at least one gym for many foreign keys, even if SUPER_ADMIN doesn't have one
-    await client.query("INSERT INTO gyms (name, address) VALUES ('Lakhlifi Gym', 'Default Address')");
-    
+    await client.query("INSERT INTO gyms (name, address) VALUES ('tamesna Gym', 'Default Address')");
+
     await client.query(
       'INSERT INTO users (username, password_hash, role, gym_id) VALUES ($1, $2, $3, $4)',
       ['ihssane', passwordHash, 'SUPER_ADMIN', null]

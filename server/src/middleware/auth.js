@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Auth Middleware
+// tamesna Gym v9.0 — Auth Middleware
 // JWT verification for Fastify
 // ============================================
 

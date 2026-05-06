@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — BullMQ Jobs Setup
+// tamesna Gym v9.0 — BullMQ Jobs Setup
 // Cron jobs for expiration, auto-unfreeze, queue cleanup
 // CdC §4.2, §4.3
 // ============================================
@@ -160,7 +160,7 @@ export function startWorkers() {
           await query(`UPDATE sending_queue SET status='SENDING' WHERE id=$1`, [item.id]);
           const delay = await sendSmartMessage(item.phone_number, item.message);
           await query(`UPDATE sending_queue SET status='SENT', sent_at=NOW() WHERE id=$1`, [item.id]);
-          console.log(`✅ Smart Send Success: ${item.phone_number}. Waiting ${Math.round(delay/1000)}s...`);
+          console.log(`✅ Smart Send Success: ${item.phone_number}. Waiting ${Math.round(delay / 1000)}s...`);
           await new Promise(r => setTimeout(r, delay));
         } catch (err) {
           await query(`

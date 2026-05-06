@@ -5,7 +5,7 @@ import { useToast } from './Toast';
 import { getErrorMessage, ERROR_MESSAGES } from '../../utils/errorMessages';
 
 const DEFAULT_TEMPLATES = [
-  { id: 't2', name: '📸 Instagram', content: 'Suivez-nous sur Instagram pour ne rien rater de nos nouveautés et offres spéciales ! 👉 https://www.instagram.com/lakhlifiothman7 \n\n , 👉 https://www.facebook.com/share/1L3brRcsLs/' },
+  { id: 't2', name: '📸 Instagram', content: 'Suivez-nous sur Instagram pour ne rien rater de nos nouveautés et offres spéciales ! 👉 https://www.instagram.com/tamesnaothman7 \n\n , 👉 https://www.facebook.com/share/1L3brRcsLs/' },
 ];
 
 const BulkMessageModal = ({ isOpen, onClose, selectedMembers }) => {
@@ -54,7 +54,7 @@ const BulkMessageModal = ({ isOpen, onClose, selectedMembers }) => {
     setLoading(true);
     try {
       // 1. Add all selected members to the queue
-      await Promise.all(validMembers.map(member => 
+      await Promise.all(validMembers.map(member =>
         api.post('/queue', {
           member_id: member.id,
           phone_number: member.phone,
@@ -62,7 +62,7 @@ const BulkMessageModal = ({ isOpen, onClose, selectedMembers }) => {
           gym_id: member.gym_id
         })
       ));
-      
+
       setCompleted(true);
     } catch (err) {
       showToast(getErrorMessage(err, ERROR_MESSAGES.WA_SEND_FAIL), 'error');
@@ -106,7 +106,7 @@ const BulkMessageModal = ({ isOpen, onClose, selectedMembers }) => {
                     <Zap className="w-3.5 h-3.5 mr-1 text-brand-red" />
                     Modèles Rapides
                   </label>
-                  <button 
+                  <button
                     onClick={saveTemplate}
                     disabled={!message.trim()}
                     className="text-xs font-bold text-brand-red flex items-center hover:bg-brand-papaya px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -115,7 +115,7 @@ const BulkMessageModal = ({ isOpen, onClose, selectedMembers }) => {
                     Enregistrer comme modèle
                   </button>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2 pb-2">
                   {[...DEFAULT_TEMPLATES, ...customTemplates].map((t) => (
                     <div key={t.id} className="relative group">

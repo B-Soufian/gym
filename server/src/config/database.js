@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Database Configuration
+// tamesna Gym v9.0 — Database Configuration
 // PostgreSQL connection pool with RLS support
 // ============================================
 
@@ -42,13 +42,13 @@ export async function queryWithRLS(text, params = [], rlsContext = null) {
       // When no gym is selected (global view), use SUPER_ADMIN bypass in RLS
       const effectiveRole = !rlsContext.gymId ? 'SUPER_ADMIN' : rlsContext.role;
       await client.query('BEGIN');
-      
+
       // Use set_config via SELECT for maximum compatibility
       await client.query(`SELECT set_config('app.current_user_id', $1, true)`, [rlsContext.userId.toString()]);
       await client.query(`SELECT set_config('app.current_username', $1, true)`, [rlsContext.username]);
       await client.query(`SELECT set_config('app.current_gym_id', $1, true)`, [(rlsContext.gymId || 0).toString()]);
       await client.query(`SELECT set_config('app.current_role', $1, true)`, [effectiveRole]);
-      
+
       const result = await client.query(text, params);
       await client.query('COMMIT');
       return result;
@@ -77,7 +77,7 @@ export async function transactionWithRLS(rlsContext, callback) {
   try {
     const effectiveRole = !rlsContext.gymId ? 'SUPER_ADMIN' : rlsContext.role;
     await client.query('BEGIN');
-    
+
     await client.query(`SELECT set_config('app.current_user_id', $1, true)`, [rlsContext.userId.toString()]);
     await client.query(`SELECT set_config('app.current_username', $1, true)`, [rlsContext.username]);
     await client.query(`SELECT set_config('app.current_gym_id', $1, true)`, [(rlsContext.gymId || 0).toString()]);
@@ -109,7 +109,7 @@ export async function query(text, params = []) {
         set_config('app.current_gym_id', '0', true),
         set_config('app.current_role', 'SUPER_ADMIN', true)
     `);
-    
+
     const result = await client.query(text, params);
     await client.query('COMMIT');
     return result;

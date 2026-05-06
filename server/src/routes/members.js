@@ -1,5 +1,5 @@
 // ============================================
-// Lakhlifi Gym v9.0 — Members Routes
+// tamesna Gym v9.0 — Members Routes
 // CRUD + freeze/unfreeze | CdC §IX, §4
 // ============================================
 
@@ -8,8 +8,8 @@ import { authenticate, getRLSContext } from '../middleware/auth.js';
 
 // State machine transitions (CdC §4.1)
 const VALID_TRANSITIONS = {
-  ACTIVE:  ['FROZEN', 'EXPIRED', 'DELETED'],
-  FROZEN:  ['ACTIVE', 'EXPIRED', 'DELETED'],
+  ACTIVE: ['FROZEN', 'EXPIRED', 'DELETED'],
+  FROZEN: ['ACTIVE', 'EXPIRED', 'DELETED'],
   EXPIRED: ['ACTIVE', 'DELETED'],  // ACTIVE only via new payment
   DELETED: [],                      // Terminal state
 };
@@ -21,7 +21,7 @@ export default async function memberRoutes(fastify) {
     if (request.user.role === 'STAFF') {
       rls.gymId = null; // Bypass gym isolation to search all members
     }
-    
+
     // Auto-update expired memberships before fetching (CdC §4.1)
     await queryWithRLS(
       `UPDATE members 
@@ -39,14 +39,14 @@ export default async function memberRoutes(fastify) {
     let idx = 1;
 
     // Staff can search all members across all gyms (Global Search)
-    if (gym_id && request.user.role !== 'STAFF') { 
-      conditions.push(`gym_id = $${idx++}`); 
-      params.push(gym_id); 
+    if (gym_id && request.user.role !== 'STAFF') {
+      conditions.push(`gym_id = $${idx++}`);
+      params.push(gym_id);
     }
-    
+
     if (status) { conditions.push(`status = $${idx++}`); params.push(status); }
-    
-    if (search) { 
+
+    if (search) {
       const searchTerm = search.trim();
       const isStaff = request.user.role === 'STAFF';
       let searchCondition = '';
@@ -73,9 +73,9 @@ export default async function memberRoutes(fastify) {
         )`;
         params.push(`%${searchTerm}%`);
       }
-      
+
       conditions.push(searchCondition);
-      idx++; 
+      idx++;
     }
 
     const where = conditions.join(' AND ');
@@ -89,7 +89,7 @@ export default async function memberRoutes(fastify) {
     const isStaff = request.user.role === 'STAFF';
     const rows = result.rows.map(m => {
       if (isStaff && m.phone) {
-        m.phone = m.phone.length > 4 
+        m.phone = m.phone.length > 4
           ? `${m.phone.substring(0, 2)}****${m.phone.substring(m.phone.length - 2)}`
           : '****';
       }
@@ -108,19 +108,19 @@ export default async function memberRoutes(fastify) {
   fastify.get('/expiring', { preHandler: [authenticate] }, async (request, reply) => {
     const rls = getRLSContext(request);
     const { gym_id } = request.query;
-    
+
     let query = `SELECT * FROM members 
        WHERE status != 'DELETED' 
        AND subscription_end BETWEEN CURRENT_DATE - INTERVAL '3 days' AND CURRENT_DATE + INTERVAL '7 days'`;
     const params = [];
-    
+
     if (gym_id) {
       query += ` AND gym_id = $1`;
       params.push(gym_id);
     }
-    
+
     query += ` ORDER BY subscription_end`;
-    
+
     const result = await queryWithRLS(query, params, rls);
     return reply.send({ members: result.rows, total: result.rows.length });
   });
@@ -131,7 +131,7 @@ export default async function memberRoutes(fastify) {
     if (request.user.role === 'STAFF') {
       rls.gymId = null; // Bypass gym isolation to view any member
     }
-    
+
     // Auto-update if expired before showing details
     await queryWithRLS(
       `UPDATE members SET status = 'EXPIRED' 
@@ -142,10 +142,10 @@ export default async function memberRoutes(fastify) {
 
     const result = await queryWithRLS('SELECT m.*, g.name as gym_name FROM members m LEFT JOIN gyms g ON m.gym_id = g.id WHERE m.id=$1', [request.params.id], rls);
     if (result.rows.length === 0) return reply.code(404).send({ error: 'Membre introuvable' });
-    
+
     const member = result.rows[0];
     if (request.user.role === 'STAFF' && member.phone) {
-      member.phone = member.phone.length > 4 
+      member.phone = member.phone.length > 4
         ? `${member.phone.substring(0, 2)}****${member.phone.substring(member.phone.length - 2)}`
         : '****';
     }
@@ -162,10 +162,10 @@ export default async function memberRoutes(fastify) {
   fastify.post('/', { preHandler: [authenticate] }, async (request, reply) => {
     const { first_name, last_name, phone, email, gender, date_of_birth, notes, subscription_start, subscription_end, custom_id, registration_date, subscription_id, has_insurance } = request.body;
     const rls = getRLSContext(request);
-    
+
     // Determine gym_id
-    let final_gym_id = (request.user.role === 'SUPER_ADMIN' || !request.user.gym_id) 
-      ? (request.body.gym_id || request.user.gym_id) 
+    let final_gym_id = (request.user.role === 'SUPER_ADMIN' || !request.user.gym_id)
+      ? (request.body.gym_id || request.user.gym_id)
       : request.user.gym_id;
 
     if (!final_gym_id) {
