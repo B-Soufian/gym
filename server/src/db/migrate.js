@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 import pg from 'pg';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: join(dirname(fileURLToPath(import.meta.url)), '../../../.env') });
+dotenv.config({ path: join(dirname(fileURLToPath(import.meta.url)), '../../.env') });
 
 const { Client } = pg;
 

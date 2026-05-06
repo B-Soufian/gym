@@ -22,7 +22,7 @@ import { healthCheck } from './src/config/database.js';
 import { scheduleJobs, startWorkers } from './src/jobs/index.js';
 import { initWhatsApp } from './src/services/whatsapp.js';
 
-dotenv.config({ path: '../.env' });
+dotenv.config();
 
 const PORT = parseInt(process.env.PORT || '3000');
 const HOST = '0.0.0.0';
