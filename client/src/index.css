@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-lava: #780000;
+  --color-brand-red: #c1121f;
+  --color-brand-papaya: #fdf0d5;
+  --color-brand-space: #003049;
+  --color-brand-steel: #669bbc;
+  
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  --font-sans: "Inter", "Outfit", "Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+  :root {
+    --background: #fdf0d5; /* Papaya Whip */
+    --foreground: #003049; /* Deep Space Blue */
+    
+    --card: #ffffff;
+    --card-foreground: #003049;
+    
+    --popover: #ffffff;
+    --popover-foreground: #003049;
+    
+    --primary: #c1121f; /* Brick Red */
+    --primary-foreground: #fdf0d5;
+    
+    --secondary: #669bbc; /* Steel Blue */
+    --secondary-foreground: #003049;
+    
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    
+    --accent: #780000; /* Molten Lava */
+    --accent-foreground: #fdf0d5;
+    
+    --destructive: #ef4444;
+    --destructive-foreground: #f8fafc;
+
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #c1121f;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: #001a2c; /* Slightly darker Deep Space Blue */
+    --foreground: #fdf0d5;
+    
+    --card: #003049; /* Deep Space Blue */
+    --card-foreground: #fdf0d5;
+    
+    --popover: #003049;
+    --popover-foreground: #fdf0d5;
+    
+    --primary: #c1121f;
+    --primary-foreground: #fdf0d5;
+    
+    --secondary: #669bbc;
+    --secondary-foreground: #fdf0d5;
+    
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    
+    --accent: #780000;
+    --accent-foreground: #fdf0d5;
+    
+    --destructive: #7f1d1d;
+    --destructive-foreground: #fef2f2;
+
+    --border: #1e293b;
+    --input: #1e293b;
+    --ring: #c1121f;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-brand-lava;
+  }
+
+  .bg-premium-gradient {
+    @apply bg-gradient-to-br from-brand-space via-brand-space to-brand-lava;
+  }
+}

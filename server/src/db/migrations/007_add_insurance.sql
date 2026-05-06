@@ -1,0 +1,5 @@
+BEGIN;
+
+ALTER TABLE members ADD COLUMN IF NOT EXISTS insurance_end DATE;
+
+COMMIT;
